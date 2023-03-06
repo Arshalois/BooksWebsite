@@ -4,17 +4,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CheckOutPage extends pageBaseBooks{
+public class CheckOutPage extends pageBaseBooks {
     private final static String TITLE = "CheckOutPage";
-    public CheckOutPage(WebDriver driver) {
-        super(driver,TITLE );}
-    private WebElement freeDelivery = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div/div/div/div[2]/div[3]/dl/dd/strong"));
-    private WebElement userEmail = driver.findElement(By.xpath("//*[@aria-label='Email address (for order confirmation)']"));
-    public WebElement getFreeDeliveryValue(){
-        return freeDelivery;}
 
-    public CheckOutPage loginTheUser(String login){
+    public CheckOutPage(WebDriver driver) {
+        super(driver, TITLE);
+    }
+
+    private WebElement userEmail = driver.findElement(By.xpath("//*[@aria-label='Email address (for order confirmation)']"));
+    private WebElement userName = driver.findElement(By.xpath("//*[@name='delivery-fullName']"));
+    private WebElement deliveryCountry = driver.findElement(By.id("deliveryCountryDropdown"));
+    By deliveryCountrySelect = By.xpath("//*[@name ='option-AT']");
+    By enterAddressManually = By.name("manualEntryButton");
+   // By enterAddressLine1 = By.name("delivery-addressLine1");
+   private WebElement buyNowButton = driver.findElement(By.id("buyNowButton"));
+
+
+    public CheckOutPage enterDeliveryInfo(String login, String name) {
         userEmail.sendKeys(login);
+        userName.sendKeys(name);
+        deliveryCountry.click();
+        driver.findElement(deliveryCountrySelect).click();
+        driver.findElement(enterAddressManually).click();
+        driver.findElement(enterAddressManually).click();
+       // driver.findElement(enterAddressLine1).sendKeys("Address 1");
+        buyNowButton.click();
         return new CheckOutPage(driver);
     }
 
@@ -34,4 +48,5 @@ public class CheckOutPage extends pageBaseBooks{
         return new CheckOutPage(driver);
 }
 
-    */}
+    */
+}
