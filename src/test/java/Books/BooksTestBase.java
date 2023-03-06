@@ -1,5 +1,7 @@
 package Books;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +14,8 @@ public class BooksTestBase {
     @BeforeEach
     void setUp() {
         System.setProperty("webdriver.chrome.driver", "/Users/arshaluis/IdeaProjects/AutoTestProject/src/main/resources/drivers/chromedriver");
-       //Logger logger = LogManager.getLogger("Chrome Driver starting");
-       // logger.info("Smth to test if logs are working");
+       Logger logger = (Logger) LogManager.getLogger("Chrome Driver starting");
+       logger.info("Smth to test if logs are working");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -22,8 +24,8 @@ public class BooksTestBase {
 
     }
   //  @AfterEach
-   // void tearDown() {
-       // driver.quit();
-    //}
+   void tearDown() {
+       driver.quit();
+    }
 }
 

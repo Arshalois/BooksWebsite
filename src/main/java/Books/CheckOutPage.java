@@ -8,10 +8,19 @@ public class CheckOutPage extends pageBaseBooks{
     private final static String TITLE = "CheckOutPage";
     public CheckOutPage(WebDriver driver) {
         super(driver,TITLE );}
+    private WebElement freeDelivery = driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div/div/div/div[2]/div[3]/dl/dd/strong"));
+    private WebElement userEmail = driver.findElement(By.xpath("//*[@aria-label='Email address (for order confirmation)']"));
+    public WebElement getFreeDeliveryValue(){
+        return freeDelivery;}
 
-   By enterEmail = By.xpath("//*[@name='email']");
+    public CheckOutPage loginTheUser(String login){
+        userEmail.sendKeys(login);
+        return new CheckOutPage(driver);
+    }
+
+   /*By enterEmail = By.xpath("//*[@name='email']");//*[@placeholder='Email']
   //  private WebElement enterEmail = driver.findElement(By.xpath("//*[@name='email']"));
-   By enterPassword = By.xpath("//*[@name='password']");
+   //By enterPassword = By.xpath("//*[@name='password']");
    // private WebElement enterPassword = driver.findElement(By.xpath("//*[@name='password']"));
     //private WebElement clickToSubmit = driver.findElement(By.id("signInSubmit"));
 
@@ -23,4 +32,6 @@ public class CheckOutPage extends pageBaseBooks{
 
      // clickToSubmit.click();
         return new CheckOutPage(driver);
-}}
+}
+
+    */}
