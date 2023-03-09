@@ -10,8 +10,7 @@ public class LoginPage extends pageBaseBooks{
         super(driver,TITLE );}
 
     private WebElement logo = driver.findElement(By.xpath("//*[@src='https://d3ogvdx946i4sr.cloudfront.net/assets/v2.25.81/img/logo.svg']"));
-
-   // WebElement loginField = driver.findElement(By.xpath("//*[@placeholder=\"Email\"]"));
+   //WebElement loginField = driver.findElement(By.xpath("//*[@placeholder=\"Email\"]"));
     //private WebElement passwordField = driver.findElement(By.xpath("//*[@placeholder=\"Book Depository password\"]"));
    By enterEmail = By.xpath("//*[@placeholder='Email']");
     public WebElement getLogo(){ //created getter

@@ -11,7 +11,6 @@ import java.util.List;
 
 
 public class BooksWholeTest extends BooksTestBase {
-
     @Test
     public void SearchForBookAndCheckTheBooksList() {
         SearchPage searchPage = new SearchPage(driver);
@@ -27,9 +26,8 @@ public class BooksWholeTest extends BooksTestBase {
         SearchResultsPage searchResultsPage2 = new SearchResultsPage(driver);
         Assert.assertEquals(expectedBooksList, searchResultsPage2.getBooksList());
     }
-
     @Test
-    public void addToBasket() {
+    public void addToBasketAndGoToCheckout() {
         SearchPage searchPage = new SearchPage(driver);
         searchPage.searchForJavaBooks("Thinking in Java");
         searchPage.clickSearch();
@@ -40,8 +38,6 @@ public class BooksWholeTest extends BooksTestBase {
         BasketPage basketPage = new BasketPage(driver);
         basketPage.myBasket();
     }
-
-
     @Test
     public void fillDeliveryInfo() {
         SearchPage searchPage = new SearchPage(driver);
@@ -54,18 +50,6 @@ public class BooksWholeTest extends BooksTestBase {
         BasketPage basketPage = new BasketPage(driver);
         basketPage.myBasket();
         CheckOutPage checkOutPage = new CheckOutPage(driver);
-        checkOutPage.enterDeliveryInfo("test@test.com", "John Sm");
-
+        checkOutPage.enterDeliveryInfo("test@test.com", "John Sm", 123123123);
     }
-
-    @Test
-    public void Login() {
-        driver.get("https://www.bookdepository.com/account/login/to/account");
-        LoginPage loginPage = new LoginPage(driver);
-        Assertions.assertTrue(loginPage.getLogo().isDisplayed());
-        loginPage.loginTheUser("dsdssz");
-        // LoginPage loginPage = new LoginPage(driver);
-        // loginPage.successfulLogIn("test", "test2");
-    }
-
 }

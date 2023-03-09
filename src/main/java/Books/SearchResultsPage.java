@@ -9,9 +9,11 @@ import java.util.stream.Collectors;
 
 public class SearchResultsPage extends pageBaseBooks {
     private final static String TITLE = "SearchPage";
+
     public SearchResultsPage(WebDriver driver) {
         super(driver, TITLE);
     }
+
     private WebElement priceFilter = driver.findElement(By.id("filterPrice"));
     private WebElement priceHighSelect = driver.findElement(By.xpath("//*[@value='high']"));
     private WebElement availabilityFilter = driver.findElement(By.id("filterAvailability"));
@@ -20,8 +22,9 @@ public class SearchResultsPage extends pageBaseBooks {
     By langSelect = By.xpath("//*[@label ='English (17)']");
     private WebElement formatFilter = driver.findElement(By.id("filterFormat"));
     By formatSelect = By.xpath("//*[@label ='Paperback (22)']");
-    private WebElement showResults = driver.findElement(By.xpath("/html/body/div[3]/div[6]/div[4]/div[1]/div/form/div[6]/button"));
+    private WebElement showResults = driver.findElement(By.xpath("//button[contains(text(),'Refine results')]"));
     private List<WebElement> booksNames = driver.findElements(By.xpath("//*[@class='title']"));
+
     public SearchResultsPage applySomeFilters() {
         priceFilter.click();
         priceHighSelect.click();
@@ -32,9 +35,10 @@ public class SearchResultsPage extends pageBaseBooks {
         formatFilter.click();
         driver.findElement(formatSelect).click();
         showResults.click();
-        return new SearchResultsPage(driver);}
-        public List<String> getBooksList() {
-            List<String> booksList = booksNames.stream().map(rep -> rep.getText()).collect(Collectors.toList());
-            return booksList;
-        }
+        return new SearchResultsPage(driver);
+    }
+    public List<String> getBooksList() {
+        List<String> booksList = booksNames.stream().map(rep -> rep.getText()).collect(Collectors.toList());
+        return booksList;
+    }
 }

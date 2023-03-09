@@ -12,7 +12,7 @@ public class BasketPopUp extends pageBaseBooks {
     public BasketPopUp(WebDriver driver) {
         super(driver, TITLE);
     }
-    private WebElement addToBasket = driver.findElement(By.xpath("//*[@data-price = '85.26']"));
+    private WebElement addToBasket = driver.findElement(By.xpath("//*[@href='/basket/addisbn/isbn13/9780131872486']"));
     public BasketPopUp addToBasket() {
         addToBasket.click();
         return new BasketPopUp(driver);
